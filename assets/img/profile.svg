@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <!-- Fondo circular -->
+  <circle cx="140" cy="140" r="140" fill="url(#avatarGrad)"/>
+  <circle cx="140" cy="140" r="136" fill="none" stroke="url(#accentGrad)" stroke-width="3" opacity="0.6"/>
+  <!-- Cabeza y silueta -->
+  <circle cx="140" cy="105" r="48" fill="#38bdf8" opacity="0.9"/>
+  <!-- Cuerpo / Hombros -->
+  <path d="M 60 230 C 60 175, 220 175, 220 230 Z" fill="#a855f7" opacity="0.85"/>
+  <!-- Detalle moderno / Código decorativo -->
+  <text x="140" y="112" font-family="monospace" font-size="28" font-weight="bold" fill="#0f172a" text-anchor="middle">&lt;/&gt;</text>
+</svg>

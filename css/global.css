@@ -1,0 +1,372 @@
+/* ==========================================================================
+   css/global.css
+   Estilos globales, variables de diseño, componentes reutilizables,
+   barra de navegación compartida y pie de página.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES DE DISEÑO (:root)
+   Paleta de colores, tipografía, bordes y transiciones globales.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta de colores principal */
+  --color-bg: #0f172a;               /* Fondo oscuro principal (slate-900) */
+  --color-surface: #1e293b;          /* Superficie de tarjetas y navbar (slate-800) */
+  --color-surface-hover: #334155;    /* Superficie activa o hover (slate-700) */
+  --color-border: #334155;           /* Bordes suaves */
+
+  /* Colores de énfasis / marca */
+  --color-primary: #38bdf8;          /* Azul celeste brillante (sky-400) */
+  --color-primary-hover: #0ea5e9;    /* Azul celeste más intenso (sky-500) */
+  --color-secondary: #a855f7;        /* Púrpura moderno (purple-500) */
+  --color-secondary-hover: #9333ea;  /* Púrpura más intenso */
+
+  /* Colores de texto */
+  --color-text: #f8fafc;             /* Texto principal de alto contraste */
+  --color-text-muted: #94a3b8;       /* Texto secundario y etiquetas atenuadas */
+
+  /* Colores de estado */
+  --color-success: #22c55e;          /* Verde para mensajes exitosos */
+  --color-error: #ef4444;            /* Rojo para errores o alertas */
+
+  /* Tipografía */
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /* Redondeos y sombras */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+  /* Transiciones */
+  --transition: all 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET UNIVERSAL Y ESTILOS BASE
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Permite que el footer se mantenga al final si el contenido es corto */
+main {
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. CLASES UTILITARIAS Y DE MAQUETACIÓN
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primary);
+  background-color: rgba(56, 189, 248, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Botones reutilizables */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #0b1120;
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  border-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-hover);
+  border-color: var(--color-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+/* Insignias de tecnologías (Badges) */
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--color-primary);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   4. ENCABEZADO Y NAVEGACIÓN COMPARTIDA (.site-header)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.logo-accent {
+  color: var(--color-primary);
+}
+
+/* Botón hamburguesa para móviles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 1.4rem;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.menu-toggle:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-primary);
+}
+
+/* Menú de navegación */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+}
+
+/* Estado activo del enlace (marcado por js/main.js) */
+.nav-link.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   5. PIE DE PÁGINA COMPARTIDO (.site-footer)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #0b1120;
+  border-top: 1px solid var(--color-border);
+  padding: 2.5rem 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE DESIGN (Media Queries para Navegación Móvil)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-surface);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.25rem 1.5rem;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    display: none; /* Oculto por defecto en móvil */
+  }
+
+  /* Clase agregada por js/main.js para desplegar el menú */
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .nav-link:hover {
+    background-color: var(--color-surface-hover);
+  }
+
+  .nav-link.active {
+    background-color: rgba(56, 189, 248, 0.12);
+  }
+
+  .nav-link.active::after {
+    display: none; /* En móvil se usa el fondo en vez del subrayado */
+  }
+}

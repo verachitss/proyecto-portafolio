@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="350" fill="url(#bgGrad2)"/>
+  <!-- Barra superior -->
+  <rect x="0" y="0" width="600" height="40" fill="#0b1120"/>
+  <circle cx="25" cy="20" r="6" fill="#ef4444"/>
+  <circle cx="45" cy="20" r="6" fill="#eab308"/>
+  <circle cx="65" cy="20" r="6" fill="#22c55e"/>
+  <!-- Ondas Wi-Fi decorativas -->
+  <path d="M 270 120 A 40 40 0 0 1 330 120" stroke="#38bdf8" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 255 105 A 60 60 0 0 1 345 105" stroke="#38bdf8" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 240 90 A 80 80 0 0 1 360 90" stroke="#38bdf8" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <circle cx="300" cy="135" r="6" fill="#38bdf8"/>
+  <!-- Paneles de estado de red -->
+  <rect x="40" y="160" width="160" height="120" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="55" y="190" fill="#22c55e" font-family="sans-serif" font-size="12" font-weight="bold">DISPOSITIVOS ACTIVOS</text>
+  <text x="55" y="235" fill="#f8fafc" font-family="sans-serif" font-size="32" font-weight="bold">128</text>
+  <text x="55" y="260" fill="#94a3b8" font-family="sans-serif" font-size="11">Monitoreo continuo</text>
+
+  <rect x="220" y="160" width="160" height="120" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="235" y="190" fill="#38bdf8" font-family="sans-serif" font-size="12" font-weight="bold">LATENCIA PROMEDIO</text>
+  <text x="235" y="235" fill="#f8fafc" font-family="sans-serif" font-size="32" font-weight="bold">14ms</text>
+  <text x="235" y="260" fill="#94a3b8" font-family="sans-serif" font-size="11">NestJS + WebSocket</text>
+
+  <rect x="400" y="160" width="160" height="120" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="415" y="190" fill="#a855f7" font-family="sans-serif" font-size="12" font-weight="bold">PRUEBAS POSTMAN</text>
+  <text x="415" y="235" fill="#f8fafc" font-family="sans-serif" font-size="32" font-weight="bold">100%</text>
+  <text x="415" y="260" fill="#94a3b8" font-family="sans-serif" font-size="11">Endpoints validados</text>
+  <text x="300" y="325" fill="#a855f7" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle">SISTEMA DE MONITOREO WI-FI &amp; NESTJS</text>
+</svg>
