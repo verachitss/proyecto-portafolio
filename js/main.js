@@ -22,10 +22,17 @@ function initMobileMenu() {
 
   if (!menuToggle || !navMenu) return;
 
+  const setMenuState = (isOpen) => {
+    navMenu.classList.toggle('open', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+    menuToggle.textContent = isOpen ? '✕' : '☰';
+  };
+
   // Alternar apertura/cierre al hacer clic en el botón hamburguesa
   menuToggle.addEventListener('click', () => {
-    const isOpen = navMenu.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    const isOpen = !navMenu.classList.contains('open');
+    setMenuState(isOpen);
   });
 
   // Cerrar el menú al hacer clic en cualquier enlace de navegación
@@ -33,8 +40,7 @@ function initMobileMenu() {
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       if (navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
+        setMenuState(false);
       }
     });
   });
@@ -43,8 +49,22 @@ function initMobileMenu() {
   document.addEventListener('click', (event) => {
     const isClickInside = menuToggle.contains(event.target) || navMenu.contains(event.target);
     if (!isClickInside && navMenu.classList.contains('open')) {
-      navMenu.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      setMenuState(false);
+    }
+  });
+
+  // Cerrar el menú con la tecla Escape para accesibilidad
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navMenu.classList.contains('open')) {
+      setMenuState(false);
+      menuToggle.focus();
+    }
+  });
+
+  // Restablecer estado si la pantalla vuelve a escritorio
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+      setMenuState(false);
     }
   });
 }

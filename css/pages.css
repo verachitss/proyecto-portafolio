@@ -32,7 +32,7 @@
 }
 
 .hero-name {
-  font-size: 3rem;
+  font-size: clamp(1.95rem, 6.5vw, 3rem);
   font-weight: 800;
   line-height: 1.15;
   color: var(--color-text);
@@ -40,7 +40,7 @@
 }
 
 .hero-role {
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
   font-weight: 600;
   color: var(--color-text-muted);
   margin-bottom: 1.25rem;
@@ -178,6 +178,9 @@
 .about-bio-details li {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
   font-size: 0.95rem;
 }
 
@@ -187,6 +190,7 @@
 
 .about-bio-details span {
   color: var(--color-text-muted);
+  word-break: break-word;
 }
 
 /* Línea de Tiempo (Timeline) */
@@ -303,6 +307,8 @@
 .skill-info {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
   font-size: 0.9rem;
 }
 
@@ -314,6 +320,7 @@
 .skill-percentage {
   font-weight: 700;
   color: var(--color-primary);
+  flex-shrink: 0;
 }
 
 .progress-bar {
@@ -526,7 +533,7 @@
   width: 100%;
   padding: 0.8rem 1rem;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem; /* Evita zoom automático en iOS al enfocar */
   color: var(--color-text);
   background-color: #0f172a;
   border: 1px solid var(--color-border);
@@ -582,10 +589,19 @@ textarea.form-control {
 
 /* Tablets y pantallas medianas */
 @media (max-width: 992px) {
+  .hero {
+    padding: 3rem 0 2.5rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 2.5rem;
+    gap: 2rem;
+  }
+
+  /* En pantallas pequeñas/medianas, la foto va primero para destacar el perfil */
+  .hero-visual {
+    order: -1;
   }
 
   .hero-desc {
@@ -601,36 +617,125 @@ textarea.form-control {
   .skills-grid,
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
 /* Móviles */
 @media (max-width: 640px) {
-  .hero-name {
-    font-size: 2.2rem;
+  .hero {
+    padding: 2rem 0;
   }
 
-  .hero-role {
-    font-size: 1.15rem;
+  .hero-grid {
+    gap: 1.5rem;
   }
 
   .hero-avatar-wrapper {
-    width: 220px;
-    height: 220px;
+    width: 185px;
+    height: 185px;
+    padding: 6px;
+  }
+
+  .hero-desc {
+    font-size: 0.98rem;
+    margin-bottom: 1.5rem;
   }
 
   .highlights-grid,
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .highlight-card,
+  .about-bio-card,
+  .timeline-card,
+  .skill-category,
+  .contact-form-card {
+    padding: 1.35rem;
+  }
+
+  .channel-card {
+    padding: 1.25rem;
+  }
+
+  .about-grid,
+  .contact-grid {
+    gap: 1.5rem;
+  }
+
+  .about-bio-details li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+  }
+
+  .about-bio-card .btn {
+    width: 100%;
+  }
+
+  .timeline-list {
+    padding-left: 1.15rem;
+    gap: 1.5rem;
+  }
+
+  .timeline-item::before {
+    left: calc(-1.15rem - 6px);
+  }
+
+  .skill-category {
+    gap: 1.15rem;
+  }
+
+  .project-img-wrapper {
+    height: auto;
+    aspect-ratio: 600 / 350;
+  }
+
+  .project-body {
+    padding: 1.25rem;
   }
 
   .form-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Móviles compactos (<= 480px) */
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .channel-actions .btn {
+    width: 100%;
+  }
+
+  .channel-actions,
+  .project-links {
+    flex-direction: column;
+  }
+}
+
+@media (hover: none) {
+  .highlight-card:hover,
+  .project-card:hover,
+  .channel-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .project-card:hover .project-img {
+    transform: none;
   }
 }
